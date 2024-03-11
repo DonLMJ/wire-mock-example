@@ -1,0 +1,7 @@
+{{#assign 'orderJson'}}
+    {{state context=request.pathSegments.[1] property='fullBody'}}
+{{/assign}}
+
+{{!- Building response body --}}
+{{orderJson}}
+

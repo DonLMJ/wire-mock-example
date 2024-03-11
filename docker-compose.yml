@@ -1,0 +1,11 @@
+version: '3.0'
+services:
+  wiremock:
+    image: wiremock/wiremock:latest
+    command: "--global-response-templating --verbose --port=11091"
+    ports:
+      - '11091:11091'
+    volumes:
+      - '$PWD/wiremock:/home/wiremock'
+      - '$PWD/extensions:/var/wiremock/extensions'
+

@@ -1,0 +1,105 @@
+{
+    "mappings": [
+        {
+            "scenarioName": "Delete retry",
+            "requiredScenarioState": "Started",
+            "request": {
+                "method": "DELETE",
+                "urlPattern": "/order/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                "headers": {
+                    "X-Stub-Type": {
+                        "equalTo": "scenario"
+                    }
+                }
+            },
+            "response": {
+                "status": 409
+            }
+        },
+        {
+            "scenarioName": "Delete retry",
+            "requiredScenarioState": "Started",
+            "newScenarioState": "Retry 1",
+            "request": {
+                "method": "DELETE",
+                "urlPattern": "/order/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                "headers": {
+                    "X-Stub-Type": {
+                        "equalTo": "scenario"
+                    }
+                }
+            },
+            "response": {
+                "status": 409
+            }
+        },
+        {
+            "scenarioName": "Delete retry",
+            "requiredScenarioState": "Retry 1",
+            "newScenarioState": "Retry 2",
+            "request": {
+                "method": "DELETE",
+                "urlPattern": "/order/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                "headers": {
+                    "X-Stub-Type": {
+                        "equalTo": "scenario"
+                    }
+                }
+            },
+            "response": {
+                "status": 409
+            }
+        },
+        {
+            "scenarioName": "Delete retry",
+            "requiredScenarioState": "Retry 2",
+            "newScenarioState": "Retry 3",
+            "request": {
+                "method": "DELETE",
+                "urlPattern": "/order/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                "headers": {
+                    "X-Stub-Type": {
+                        "equalTo": "scenario"
+                    }
+                }
+            },
+            "response": {
+                "status": 409
+            }
+        },
+        {
+            "scenarioName": "Delete retry",
+            "requiredScenarioState": "Retry 3",
+            "newScenarioState": "Finished",
+            "request": {
+                "method": "DELETE",
+                "urlPattern": "/order/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                "headers": {
+                    "X-Stub-Type": {
+                        "equalTo": "scenario"
+                    }
+                }
+            },
+            "response": {
+                "status": 200
+            }
+        },
+        {
+            "scenarioName": "Delete retry",
+            "requiredScenarioState": "Finished",
+            "newScenarioState": "Started",
+            "request": {
+                "method": "DELETE",
+                "urlPattern": "/order/[a-fA-F0-9]{8}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{4}-[a-fA-F0-9]{12}",
+                "headers": {
+                    "X-Stub-Type": {
+                        "equalTo": "scenario"
+                    }
+                }
+            },
+            "response": {
+                "status": 200
+            }
+        }
+    ]
+}

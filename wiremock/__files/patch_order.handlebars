@@ -1,0 +1,39 @@
+{{#assign 'orderJson'}}
+    {{state context=request.pathSegments.[1] property='fullBody'}}
+{{/assign}}
+
+{{#parseJson 'orderBody'}}
+    {{orderJson}}
+{{/parseJson}}
+
+{{#parseJson 'requestBody'}}
+    {{jsonPath request.body '$'}}
+{{/parseJson}}
+
+{{!- Building response body --}}
+{
+    "id":"{{orderBody.id}}",
+    "description":"{{orderBody.description}}",
+    "createdTs":"{{orderBody.createdTs}}",
+    "state":"{{requestBody.state}}",
+    "total":"{{orderBody.total}}",
+    "currency":"{{orderBody.currency}}",
+    
+    "lines": [
+
+    {{#each orderBody.lines as |line index|}}
+            
+        {
+            "item":"{{line.item}}",
+            "units":{{line.units}},
+            "price":{{price}}
+        }
+
+        {{#lt (math index '+' 1) (size orderBody.lines)}},{{/lt}}
+
+    {{/each}}
+
+    ]
+
+}
+

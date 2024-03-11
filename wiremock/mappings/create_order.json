@@ -1,0 +1,25 @@
+{
+    "priority": 10,
+    "request": {
+        "method": "POST",
+        "urlPath": "/order"
+    },
+    "response": {
+        "status": 202,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "bodyFileName": "create_order.handlebars"
+    },
+    "serveEventListeners": [
+        {
+            "name": "recordState",
+            "parameters": {
+                "context": "{{jsonPath response.body '$.id'}}",
+                "state": {
+                    "fullBody": "{{{jsonPath response.body '$'}}}"
+                }
+            }
+        }
+    ]
+}

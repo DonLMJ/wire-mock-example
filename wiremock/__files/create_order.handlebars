@@ -1,0 +1,37 @@
+{{#parseJson 'requestBody'}}
+    {{jsonPath request.body '$'}}
+{{/parseJson}}
+
+{{!- Building response body --}}
+
+{
+    "id": "{{randomValue type='UUID'}}",
+    "description": "{{requestBody.description}}",
+
+    "createdTs": "{{now format='yyyy-MM-dd HH:mm:ssZ'}}",
+    "state": "ACTIVE",
+
+    {{#assign 'total'}}0{{/assign}}
+
+    "lines": [
+
+    {{#each requestBody.lines as |line index|}}
+    
+        {{#assign 'price'}}{{ randomInt lower=5 upper=9 }}{{/assign}}
+        {{#assign 'total'}}{{ math total '+' (math units '*' price) }}{{/assign}}
+        
+        {
+            "item":"{{line.item}}",
+            "units":{{line.units}},
+            "price":{{price}}
+        }
+
+        {{#lt (math index '+' 1) (size requestBody.lines)}},{{/lt}}
+
+    {{/each}}
+
+    ],
+
+    "total":{{total}},
+    "currency": "{{requestBody.currency}}"
+}
